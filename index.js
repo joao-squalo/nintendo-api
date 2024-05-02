@@ -1,5 +1,5 @@
 const express = require('express')
-const { getGamesBrazil, getGamesEurope, getGamesAmerica, getPrices } = require('nintendo-switch-eshop');
+const { getGamesBrazil, getGamesEurope, getGamesAmerica, getPrices, getActiveShops } = require('nintendo-switch-eshop');
 const app = express()
 app.use(express.json());
 const port = 3333
@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
 
 app.get('/Brasil', async (req, res) => {
   res.send(await getGamesBrazil())
+})
+
+app.get('/Country', async (req, res) => {
+  res.send(await getActiveShops())
 })
 
 app.get('/America', async (req, res) => {
